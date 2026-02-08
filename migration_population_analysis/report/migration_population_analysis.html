@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>migration_population_analysis</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 1600px;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1
+id="οι-πληθυσμιακές-κατανομές-και-η-μακροχρόνια-μεταβολή-του-αποθέματος-μεταναστών-19902024">Οι
+πληθυσμιακές κατανομές και η μακροχρόνια μεταβολή του αποθέματος
+μεταναστών (1990–2024)</h1>
+<h2 id="εισαγωγή">1. Εισαγωγή</h2>
+<p>Η παρούσα ανάλυση εξετάζει τη μακροχρόνια μεταβολή του αποθέματος
+μεταναστών σε παγκόσμιο επίπεδο για την περίοδο 1990–2024, συνδυάζοντας
+δύο συμπληρωματικές προσεγγίσεις:</p>
+<ul>
+<li><p><strong>απόλυτες μεταβολές</strong> (άτομα ανά έτος)</p></li>
+<li><p><strong>σταθμισμένες μεταβολές</strong> ως προς τον πληθυσμό (ανά
+1.000 κατοίκους)</p></li>
+</ul>
+<p>Στόχος είναι να αποτυπωθεί όχι μόνο το συνολικό μέγεθος της
+μεταναστευτικής μεταβολής, αλλά και η έντασή της σε σχέση με το
+πληθυσμιακό μέγεθος κάθε χώρας. Με τον τρόπο αυτό αποφεύγεται η
+υποεκτίμηση χωρών με μικρό πληθυσμό αλλά υψηλή σχετική μεταναστευτική
+πίεση.</p>
+<h2 id="δεδομένα-και-μεθοδολογία">2. Δεδομένα και Μεθοδολογία</h2>
+<h3 id="πηγές-δεδομένων">2.1 Πηγές δεδομένων</h3>
+<p>Η ανάλυση βασίζεται σε δύο κύρια σύνολα δεδομένων:</p>
+<ul>
+<li><p>Απόθεμα μεταναστών ανά χώρα (διεθνείς βάσεις / ΟΗΕ)</p></li>
+<li><p>Πληθυσμιακά δεδομένα ανά χώρα (μέσος πληθυσμός περιόδου)</p></li>
+</ul>
+<p>Τα δεδομένα καλύπτουν πενταετείς παρατηρήσεις από το 1990 έως το 2024
+και έχουν εναρμονιστεί ως προς τις χρονικές περιόδους και τις ονομασίες
+χωρών.</p>
+<p>Σημείωση ταξινόμησης: Η ηπειρωτική κατηγοριοποίηση βασίζεται στη
+μεταβλητή <code>continent</code> όπως παρέχεται στο σύνολο δεδομένων
+αποθέματος μεταναστών. Στο παρόν dataset δεν εμφανίζεται ξεχωριστή
+κατηγορία «Northern America», με αποτέλεσμα χώρες όπως οι Ηνωμένες
+Πολιτείες και ο Καναδάς να εντάσσονται σε άλλες γεωγραφικές κατηγορίες
+σύμφωνα με την αρχική ταξινόμηση της πηγής.</p>
+<h3 id="υπολογισμός-μακροχρόνιας-τάσης">2.2 Υπολογισμός μακροχρόνιας
+τάσης</h3>
+<p>Για κάθε χώρα εκτιμήθηκε η μακροχρόνια τάση του αποθέματος μεταναστών
+μέσω γραμμικής παλινδρόμησης ως προς τον χρόνο. Η εκτιμώμενη κλίση
+(slope) εκφράζει:</p>
+<blockquote>
+<p>τη μέση ετήσια μεταβολή του αποθέματος μεταναστών (άτομα ανά
+έτος)</p>
+</blockquote>
+<p>Η γραμμική τάση χρησιμοποιείται αποκλειστικά ως περιγραφικό εργαλείο
+μακροχρόνιας κατεύθυνσης και όχι ως πρόβλεψη.</p>
+<h3 id="στάθμιση-ως-προς-τον-πληθυσμό">2.3 Στάθμιση ως προς τον
+πληθυσμό</h3>
+<p>Η σταθμισμένη μεταβολή ορίζεται ως:</p>
+<blockquote>
+<p>ετήσια μεταβολή αποθέματος μεταναστών ανά 1.000 κατοίκους</p>
+</blockquote>
+<p>Η στάθμιση επιτρέπει τη συγκρισιμότητα χωρών με πολύ διαφορετικό
+πληθυσμιακό μέγεθος και αναδεικνύει περιπτώσεις υψηλής μεταναστευτικής
+έντασης.</p>
+<h2 id="κατηγοριοποίηση-χωρών">3. Κατηγοριοποίηση χωρών</h2>
+<p>Οι χώρες ομαδοποιήθηκαν σε τρία διακριτά μπλοκ:</p>
+<ul>
+<li><strong>Top (↑)</strong>: θετική και ουσιαστική μακροχρόνια
+αύξηση</li>
+<li><strong>Neutral (≈)</strong>: σχεδόν μηδενική μακροχρόνια
+μεταβολή</li>
+<li><strong>Bottom (↓)</strong>: καθαρή μακροχρόνια μείωση</li>
+</ul>
+<p>Η κατηγοριοποίηση λειτουργεί ως αναλυτικό εργαλείο σύγκρισης και όχι
+ως αξιολογική κατάταξη.</p>
+<h3 id="πίνακας-1-σύνοψη-κατηγοριών-χωρών">Πίνακας 1: Σύνοψη κατηγοριών
+χωρών</h3>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 15%" />
+<col style="width: 36%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr>
+<th>Κατηγορία</th>
+<th>Πλήθος χωρών</th>
+<th>Μέση ετήσια μεταβολή (άτομα)</th>
+<th>Μέση σταθμισμένη μεταβολή</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top (↑)</td>
+<td>67</td>
+<td>63.962</td>
+<td>7.12</td>
+</tr>
+<tr>
+<td>Neutral (≈)</td>
+<td>60</td>
+<td>1.770</td>
+<td>4.49</td>
+</tr>
+<tr>
+<td>Bottom (↓)</td>
+<td>58</td>
+<td>-7.257</td>
+<td>-0.81</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ανά-ήπειρο-stacked-bar">3.1 Ανά ήπειρο (stacked bar)</h2>
+<figure>
+<img src="image.png"
+alt="Κατανομή χωρών ανά μπλοκ μακροχρόνιας μεταναστευτικής τάσης(ανά ήπειρο)" />
+<figcaption aria-hidden="true">Κατανομή χωρών ανά μπλοκ μακροχρόνιας
+μεταναστευτικής τάσης(ανά ήπειρο)</figcaption>
+</figure>
+<p>
+Η ποσοστιαία κατανομή των χωρών ανά μπλοκ μακροχρόνιας μεταναστευτικής
+τάσης παρουσιάζει έντονες διαφοροποιήσεις μεταξύ ηπείρων.
+</p>
+<p>
+Ειδικά στην <b>Ωκεανία</b>, η μεγάλη συγκέντρωση χωρών στο <b>μπλοκ
+μείωσης (Bottom)</b> αντανακλά το <i>μικρό απόλυτο πλήθος χωρών και τη
+δυσανάλογη επίδραση λίγων περιπτώσεων</i>.
+</p>
+<p>
+Για τον λόγο αυτό, η ερμηνεία των ποσοστών συνοδεύεται από απόλυτες
+κατανομές και πίνακες, ώστε να αποφεύγονται οπτικές παρανοήσεις.
+</p>
+<h2 id="κύρια-αποτελέσματα">4. Κύρια Αποτελέσματα</h2>
+<h3 id="απόλυτη-μεταβολή-αποθέματος-μεταναστών">4.1 Απόλυτη μεταβολή
+αποθέματος μεταναστών</h3>
+<p>Στο Σχήμα 1 παρουσιάζονται οι δέκα χώρες με τη μεγαλύτερη μέση ετήσια
+αύξηση αποθέματος μεταναστών σε απόλυτους όρους.</p>
+<figure>
+<img
+src="../return/final/figures/preliminary_top10_countries_positive_slope.png"
+alt="Σχήμα 1: Top 10 χώρες – απόλυτη μεταβολή" />
+<figcaption aria-hidden="true">Σχήμα 1: Top 10 χώρες – απόλυτη
+μεταβολή</figcaption>
+</figure>
+<p>Οι χώρες με μεγάλο πληθυσμό και ισχυρούς μεταναστευτικούς διαδρόμους
+κυριαρχούν στην απόλυτη κατάταξη.</p>
+<h3 id="σταθμισμένη-μεταβολή-ανά-1.000-κατοίκους">4.2 Σταθμισμένη
+μεταβολή (ανά 1.000 κατοίκους)</h3>
+<p>Η σταθμισμένη προσέγγιση αναδεικνύει διαφορετικά πρότυπα, με χώρες
+μικρότερου πληθυσμού να εμφανίζουν πολύ υψηλή μεταναστευτική ένταση.</p>
+<figure>
+<img src="../return/final/figures/fig_03_top10_weighted.png"
+alt="Σχήμα 2: Top χώρες – σταθμισμένη μεταβολή" />
+<figcaption aria-hidden="true">Σχήμα 2: Top χώρες – σταθμισμένη
+μεταβολή</figcaption>
+</figure>
+<h3 id="απόλυτη-έναντι-σταθμισμένης-μεταβολής">4.3 Απόλυτη έναντι
+σταθμισμένης μεταβολής</h3>
+<p>Το Σχήμα 3 απεικονίζει τη σχέση μεταξύ απόλυτης και σταθμισμένης
+μεταβολής, με χρωματισμό ανά κατηγορία χωρών.</p>
+<p>Οι ετικέτες εμφανίζονται μόνο για ακραίες περιπτώσεις (outliers),
+ώστε να διατηρείται η αναγνωσιμότητα του διαγράμματος.</p>
+<figure>
+<img src="../return/final/figures/lorenz_absolute.png"
+alt="Σχήμα 3: Απόλυτη vs Σταθμισμένη μεταβολή" />
+<figcaption aria-hidden="true">Σχήμα 3: Απόλυτη vs Σταθμισμένη
+μεταβολή</figcaption>
+</figure>
+<h3 id="πίνακας-2-χώρες-με-ακραία-απόκλιση-outliers">Πίνακας 2: Χώρες με
+ακραία απόκλιση (outliers)</h3>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 24%" />
+<col style="width: 30%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr>
+<th>Χώρα</th>
+<th>Απόλυτη μεταβολή</th>
+<th>Σταθμισμένη μεταβολή</th>
+<th>Κατηγορία</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qatar</td>
+<td>~75.000</td>
+<td>~84.6</td>
+<td>Top</td>
+</tr>
+<tr>
+<td>United Arab Emirates</td>
+<td>~230.000</td>
+<td>~63.1</td>
+<td>Top</td>
+</tr>
+<tr>
+<td>Saudi Arabia</td>
+<td>~320.000</td>
+<td>~22.4</td>
+<td>Top</td>
+</tr>
+<tr>
+<td>Russian Federation</td>
+<td>~-120.000</td>
+<td>~-1.1</td>
+<td>Bottom</td>
+</tr>
+</tbody>
+</table>
+<p>Ο πίνακας δείχνει ότι υψηλή απόλυτη μεταβολή δεν συνεπάγεται
+απαραίτητα υψηλή σχετική ένταση, και αντίστροφα.</p>
+<h2 id="ανισότητα-κατανομής-μεταναστευτικής-μεταβολής">5. Ανισότητα
+κατανομής μεταναστευτικής μεταβολής</h2>
+<p>Η καμπύλη Lorenz αποτυπώνει τον βαθμό συγκέντρωσης της
+μεταναστευτικής μεταβολής μεταξύ των χωρών.</p>
+<figure>
+<img src="../return/final/figures/lorenz_weighted.png"
+alt="Σχήμα 4: Καμπύλη Lorenz – σταθμισμένη μεταβολή" />
+<figcaption aria-hidden="true">Σχήμα 4: Καμπύλη Lorenz – σταθμισμένη
+μεταβολή</figcaption>
+</figure>
+<p>Η έντονη απόκλιση από τη γραμμή ισότητας υποδηλώνει ότι μικρός
+αριθμός χωρών συγκεντρώνει το μεγαλύτερο μέρος της συνολικής
+μεταβολής.</p>
+<h3 id="πίνακας-3-κατανομή-κατηγοριών-χωρών-ανά-ήπειρο">Πίνακας 3:
+Κατανομή κατηγοριών χωρών ανά ήπειρο (%)</h3>
+<table>
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 9%" />
+<col style="width: 15%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Ήπειρος</th>
+<th>Top (↑)</th>
+<th>Neutral (≈)</th>
+<th>Bottom (↓)</th>
+<th>Σύνολο χωρών</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Africa</td>
+<td>22</td>
+<td>18</td>
+<td>18</td>
+<td>58</td>
+</tr>
+<tr>
+<td>ASIA</td>
+<td>22</td>
+<td>11</td>
+<td>18</td>
+<td>51</td>
+</tr>
+<tr>
+<td>EUROPE</td>
+<td>19</td>
+<td>17</td>
+<td>22</td>
+<td>58</td>
+</tr>
+<tr>
+<td>Latin America and the Caribbean</td>
+<td>12</td>
+<td>28</td>
+<td>13</td>
+<td>53</td>
+</tr>
+<tr>
+<td>OCEANIA</td>
+<td>2</td>
+<td>5</td>
+<td>16</td>
+<td>23</td>
+</tr>
+</tbody>
+</table>
+<p>
+Ο πίνακας αποτυπώνει σαφείς <b>διαφοροποιήσεις στη μακροχρόνια
+μεταναστευτική δυναμική ανά ήπειρο</b>.
+</p>
+<p>
+Η <b>Αφρική</b> και η <b>Ασία</b> εμφανίζουν ισχυρή παρουσία χωρών στο
+μπλοκ Top <b>(↑)</b>, γεγονός που υποδηλώνει ότι σημαντικός αριθμός
+χωρών αυτών των περιοχών καταγράφει διαχρονικά αυξανόμενο απόθεμα
+μεταναστών, σε απόλυτους όρους.
+</p>
+<p>
+Αντίθετα, η <b>Ευρώπη</b> παρουσιάζει μια πιο συμμετρική κατανομή, με
+ελαφρά υπεροχή χωρών στο <b>Bottom (↓)</b>, στοιχείο που συνάδει με
+στασιμότητα ή μείωση του αποθέματος μεταναστών σε αρκετές χώρες της
+ηπείρου.
+</p>
+<p>
+Η <b>Λατινική Αμερική και Καραϊβική</b> ξεχωρίζει για την κυριαρχία του
+μπλοκ <b>Neutral (≈)</b>, υποδηλώνοντας σχετικά ήπιες και μη
+συστηματικές μακροχρόνιες μεταβολές, ενώ η <b>Ωκεανία</b> χαρακτηρίζεται
+από έντονη συγκέντρωση χωρών στο <b>Bottom (↓)</b>, αντανακλώντας
+περιορισμένη ή φθίνουσα μεταναστευτική δυναμική.
+</p>
+<p>
+Συνολικά, ο πίνακας αναδεικνύει ότι η παγκόσμια μεταναστευτική εξέλιξη
+δεν είναι ομοιόμορφη, αλλά ακολουθεί διακριτά περιφερειακά πρότυπα, τα
+οποία δεν μπορούν να ερμηνευθούν επαρκώς χωρίς γεωγραφική ανάλυση.
+</p>
+<h2 id="συμπεράσματα">6. Συμπεράσματα</h2>
+<p>Η ανάλυση δείχνει ότι:</p>
+<ul>
+<li>Η παγκόσμια μεταναστευτική δυναμική είναι έντονα συγκεντρωμένη</li>
+<li>Λίγες χώρες καθορίζουν το μεγαλύτερο μέρος της συνολικής
+μεταβολής</li>
+<li>Η στάθμιση ως προς τον πληθυσμό αποκαλύπτει διαφορετικά πρότυπα
+έντασης</li>
+<li>Οι απόλυτες και σταθμισμένες προσεγγίσεις είναι αναγκαίες και
+συμπληρωματικές</li>
+</ul>
+</body>
+</html>

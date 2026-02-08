@@ -1,0 +1,16 @@
+continent,block,countries,percent_within_continent
+ASIA,Top (↑),22,43.13725490196079
+ASIA,Neutral (≈),11,21.568627450980394
+ASIA,Bottom (↓),18,35.294117647058826
+Africa,Top (↑),22,37.93103448275862
+Africa,Neutral (≈),18,31.03448275862069
+Africa,Bottom (↓),18,31.03448275862069
+EUROPE,Top (↑),19,39.58333333333333
+EUROPE,Neutral (≈),17,35.41666666666667
+EUROPE,Bottom (↓),12,25.0
+Latin America and the Caribbean,Top (↑),12,22.641509433962266
+Latin America and the Caribbean,Neutral (≈),28,52.83018867924528
+Latin America and the Caribbean,Bottom (↓),13,24.528301886792452
+OCEANIA,Top (↑),2,8.695652173913043
+OCEANIA,Neutral (≈),5,21.73913043478261
+OCEANIA,Bottom (↓),16,69.56521739130434
