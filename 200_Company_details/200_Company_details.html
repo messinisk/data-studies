@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="el" xml:lang="el">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Personal Study / Kaggle Dataset" />
+  <meta name="dcterms.date" content="2026-01-01" />
+  <title>Exploratory Analysis of Company Ratings</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Exploratory Analysis of Company Ratings</h1>
+<p class="author">Personal Study / Kaggle Dataset</p>
+<p class="date">2026</p>
+</header>
+<h1 id="εισαγωγή">Εισαγωγή</h1>
+<p>Η παρούσα αναφορά αποτελεί διερευνητική ανάλυση (company-level
+exploratory analysis) ενός dataset 200 εταιρειών, με στόχο την κατανόηση
+πιθανών μοτίβων μεταξύ αξιολόγησης (rating), μεγέθους, ηλικίας και
+κλάδου δραστηριότητας.</p>
+<p>Η ανάλυση είναι <strong>περιγραφική και μη αιτιώδης</strong>.</p>
+<hr />
+<h1 id="περιγραφή-προετοιμασία-δεδομένων">Περιγραφή &amp; Προετοιμασία
+Δεδομένων</h1>
+<h2 id="αποσύνθεση-σύνθετης-μεταβλητής">Αποσύνθεση σύνθετης
+μεταβλητής</h2>
+<p>Η αρχική μεταβλητή <code>ctype</code> περιείχε σύνθετες πληροφορίες
+(κλάδος, μέγεθος, ηλικία, διακρίσεις) σε ενιαία μορφή κειμένου. Για
+λόγους αναλυτικής σαφήνειας, η μεταβλητή αποσυντέθηκε σε επιμέρους
+χαρακτηριστικά, τα οποία χρησιμοποιήθηκαν ξεχωριστά στην ανάλυση.</p>
+<h2 id="εξαγωγή-ηλικίας-εταιρείας">Εξαγωγή ηλικίας εταιρείας</h2>
+<p>Η ηλικία της εταιρείας εξήχθη αποκλειστικά από κειμενικές εγγραφές
+που περιείχαν ρητά τη φράση <strong>“years old”</strong>. Αριθμητικές
+τιμές που προέρχονταν από άλλες πηγές (π.χ. rankings ή πλήθος
+τοποθεσιών) αγνοήθηκαν, ώστε να αποφευχθεί εσφαλμένη ερμηνεία.</p>
+<h2 id="καθαρισμός-στηλών">Καθαρισμός στηλών</h2>
+<p>Μετά την αποσύνθεση της σύνθετης μεταβλητής <code>ctype</code>, οι
+ενδιάμεσες και μη αναλυτικά έγκυρες στήλες (<code>ctype</code>,
+<code>company_age_raw</code>, <code>labels</code>) αφαιρέθηκαν από το
+τελικό σύνολο δεδομένων.</p>
+<p>Η ανάλυση βασίζεται αποκλειστικά σε μεταβλητές με σαφή και
+μονοσήμαντη σημασιολογία.</p>
+<hr />
+<h1 id="τελικό-σύνολο-δεδομένων">Τελικό Σύνολο Δεδομένων</h1>
+<table>
+<thead>
+<tr>
+<th>Μεταβλητή</th>
+<th>Περιγραφή</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>Όνομα εταιρείας</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>Υποκειμενική αξιολόγηση</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>Κλάδος δραστηριότητας</td>
+</tr>
+<tr>
+<td>company_age</td>
+<td>Ηλικία εταιρείας (έτη)</td>
+</tr>
+<tr>
+<td>company_size</td>
+<td>Πρωτογενής περιγραφή μεγέθους</td>
+</tr>
+<tr>
+<td>company_size_cat</td>
+<td>Κανονικοποιημένη κατηγορία μεγέθους</td>
+</tr>
+<tr>
+<td>company_size_min</td>
+<td>Κατώφλι εργαζομένων (proxy)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Πρωτογενείς περιγραφικές στήλες διατηρήθηκαν μόνο για σκοπούς
+τεκμηρίωσης και δεν χρησιμοποιήθηκαν άμεσα στη στατιστική ανάλυση.</p>
+</blockquote>
+<hr />
+<h1 id="ανάλυση-μεγέθους-εταιρείας-και-rating">Ανάλυση Μεγέθους
+Εταιρείας και Rating</h1>
+<figure>
+<img src="figures/rating_company.png" alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<h2 id="έλεγχος-διαφορών-kruskalwallis">Έλεγχος διαφορών
+(Kruskal–Wallis)</h2>
+<p>Ο μη παραμετρικός έλεγχος Kruskal–Wallis έδειξε στατιστικά σημαντική
+διαφορά στα ratings μεταξύ κατηγοριών μεγέθους εταιρείας:</p>
+<ul>
+<li><strong>H = 9.65</strong></li>
+<li><strong>p = 0.022</strong></li>
+</ul>
+<p>Ωστόσο, οι διαφορές στα κεντρικά μέτρα είναι μικρές και οι κατανομές
+παρουσιάζουν έντονη επικάλυψη.</p>
+<h2 id="μέγεθος-επίδρασης-effect-size">Μέγεθος επίδρασης (Effect
+Size)</h2>
+<h3 id="epsilon-squared-ε²">Epsilon squared (ε²)</h3>
+<p>Τύπος:</p>
+<p>[ ε² = {H - k + 1}/{n - k} ]</p>
+<p>όπου:</p>
+<ul>
+<li>H: στατιστική Kruskal–Wallis<br />
+</li>
+<li>k: αριθμός ομάδων<br />
+</li>
+<li>n: συνολικό πλήθος παρατηρήσεων</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ε²</th>
+<th>Ερμηνεία</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 0.01</td>
+<td>αμελητέο</td>
+</tr>
+<tr>
+<td>0.01 – 0.06</td>
+<td>μικρό</td>
+</tr>
+<tr>
+<td>0.06 – 0.14</td>
+<td>μέτριο</td>
+</tr>
+<tr>
+<td>&gt; 0.14</td>
+<td>μεγάλο</td>
+</tr>
+</tbody>
+</table>
+<p>Το αποτέλεσμα (<strong>ε² ≈ 0.034</strong>) υποδηλώνει <strong>μικρό
+μέγεθος επίδρασης</strong>.</p>
+<hr />
+<h1 id="ηλικία-εταιρείας-και-rating">Ηλικία Εταιρείας και Rating</h1>
+<figure>
+<img src="figures/rating_company1.png" alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>========================================================== <img
+src="figures/rating_company2.png" alt="alt text" /></p>
+<p>Η συσχέτιση μεταξύ ηλικίας εταιρείας και rating είναι θετική αλλά
+ασθενής:</p>
+<ul>
+<li><strong>Spearman ρ ≈ 0.26</strong></li>
+<li><strong>p &lt; 0.001</strong></li>
+</ul>
+<p>Η οπτική διερεύνηση με LOWESS spline δείχνει:</p>
+<ul>
+<li>ήπια αύξηση του rating σε νεότερες ηλικίες,</li>
+<li>σταθεροποίηση σε μεγαλύτερες ηλικίες,</li>
+<li>αύξηση της διασποράς (ετεροσκεδαστικότητα).</li>
+</ul>
+<hr />
+<h1 id="πολυπαραγοντική-διερεύνηση">Πολυπαραγοντική Διερεύνηση</h1>
+<figure>
+<img src="figures/rating_company3.png" alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<h2 id="μέγεθος-ηλικία-rating">Μέγεθος + Ηλικία → Rating</h2>
+<p>Η ταυτόχρονη διερεύνηση ηλικίας και μεγέθους δεν αποκαλύπτει
+διακριτές ομάδες rating. Οι κατηγορίες μεγέθους παρουσιάζουν σημαντική
+επικάλυψη, ενώ η αύξηση της διασποράς με την ηλικία παρατηρείται
+ανεξαρτήτως μεγέθους εταιρείας.</p>
+<h2 id="κλάδος-industry-και-rating">Κλάδος (Industry) και Rating</h2>
+<figure>
+<img src="figures/output.png" alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Η ανάλυση ανά κλάδο δείχνει ότι:</p>
+<ul>
+<li>η σχέση ηλικίας–rating δεν είναι ομοιόμορφη,</li>
+<li>ορισμένοι κλάδοι εμφανίζουν μεγαλύτερη σταθερότητα,</li>
+<li>άλλοι μεγαλύτερη ετερογένεια.</li>
+</ul>
+<p>Δεν προκύπτει καθολικό μοτίβο.</p>
+<hr />
+<h1 id="τι-δεν-λένε-τα-δεδομένα">Τι ΔΕΝ λένε τα δεδομένα</h1>
+<h2 id="αιτιότητα">1. Αιτιότητα</h2>
+<p>Τα δεδομένα δεν επιτρέπουν αιτιώδη ερμηνεία. Η ανάλυση είναι
+παρατηρησιακή και όχι πειραματική.</p>
+<h2 id="αντικειμενική-ποιότητα">2. Αντικειμενική ποιότητα</h2>
+<p>Το rating αποτελεί υποκειμενική αξιολόγηση και δεν συνιστά
+αντικειμενικό δείκτη απόδοσης.</p>
+<h2 id="πρακτική-σημασία">3. Πρακτική σημασία</h2>
+<p>Οι στατιστικά σημαντικές διαφορές δεν συνεπάγονται αναγκαστικά
+πρακτικά σημαντικές διαφορές.</p>
+<h2 id="πρόβλεψη">4. Πρόβλεψη</h2>
+<p>Η ανάλυση δεν επιτρέπει αξιόπιστη πρόβλεψη rating.</p>
+<h2 id="περιορισμοί-dataset">5. Περιορισμοί dataset</h2>
+<ul>
+<li>άνισα μεγέθη ομάδων</li>
+<li>απουσία χρονικής διάστασης</li>
+<li>έλλειψη οικονομικών και γεωγραφικών δεδομένων</li>
+</ul>
+<hr />
+<h1 id="συμπέρασμα">Συμπέρασμα</h1>
+<p>Η ανάλυση προσφέρει χρήσιμη διερευνητική εικόνα, αναδεικνύοντας
+μοτίβα και ετερογένεια χωρίς να υποστηρίζει ισχυρά ή αιτιώδη
+συμπεράσματα. Η αξία της έγκειται στην κατανόηση και όχι στη γενίκευση ή
+την πρόβλεψη.</p>
+</body>
+</html>
