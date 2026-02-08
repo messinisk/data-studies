@@ -1,7 +1,4 @@
 # data-studies
-“Reproducible data studies: migration/population analysis and company datasets (notebooks, outputs, methods).”CC BY / CC BY-NC
-
-# data-studies
 
 Reproducible data studies: migration/population analysis and company datasets (notebooks, outputs, methods).  
 Code: MIT · Data/outputs: CC BY 4.0 (see DATA_LICENSE.md)
