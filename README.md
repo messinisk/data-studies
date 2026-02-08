@@ -1,52 +1,50 @@
-# μελέτες δεδομένων
+#data studies
+Reproducible data studies: migration/population analysis and company datasets (notebooks, results, methods). Code: MIT · Data/outputs: CC BY 4.0 (see DATA_LICENSE.md)
 
 
-Μελέτες αναπαραγώγιμων δεδομένων: ανάλυση μετανάστευσης/πληθυσμού και σύνολα δεδομένων εταιρειών (σημειωματάρια, αποτελέσματα, μέθοδοι). 
-Κώδικας: MIT · Δεδομένα/εξόδους: CC BY 4.0 (βλ. DATA_LICENSE.md)
+## What's inside
+- **Migration / Population**: studies + notebooks + reports.
+- **Company Datasets**: cleaning, EDA, modeling, KPIs.
+- **Methods**: reusable scripts/templates for reproducible analysis.
 
-## Τι υπάρχει μέσα
-- **Μετανάστευση / Πληθυσμός**: μελέτες + σημειωματάρια + αναφορές.
-- **Σύνολα δεδομένων εταιρείας**: καθαρισμός, EDA, μοντελοποίηση, KPIs.
-- **Μέθοδοι**: επαναχρησιμοποιήσιμα σενάρια/πρότυπα για αναπαραγώγιμη ανάλυση.
-## Γρήγορη εκκίνηση
-1) Δημιουργία περιβάλλοντος (Python/R)
-2) Εγκατάσταση deps
-3) Εκτέλεση του/των σημειωματάριου/ων μελέτης στην περιοχή `notebooks/` ή των σεναρίων στην περιοχή `src/`
+## Quick Start
+1) Create an environment (Python/R)
+2) Install deps
+3) Run the study notebook(s) in `notebooks/` or the scripts in `src/`
 
-## Χάρτης αποθετηρίου
-- `data/` – ακατέργαστα/ενδιάμεσα/επεξεργασμένα σύνολα δεδομένων (βλ. πολιτική δεδομένων παρακάτω)
-- `notebooks/` – σημειωματάρια EDA, μοντελοποίησης, αναφοράς
-- `src/` (ή `scripts/`) – επαναχρησιμοποιήσιμος κώδικας (ingest/clean/features)
-- `reports/` – εξαγόμενες αναφορές HTML/PDF
-- `figures/` – γραφήματα που χρησιμοποιούνται σε αναφορές/README
-- `references/` – πηγές, σύνδεσμοι, σημειώσεις
+## Repository Map
+- `data/` – raw/intermediate/processed datasets (see data policy below)
+- `notebooks/` – EDA, modeling, reporting notebooks
+- `src/` (or `scripts/`) – reusable code (ingest/clean/features)
+- `reports/` – exported HTML/PDF reports
+- `figures/` – figures used in reports/README
+- `references/` – sources, links, notes
 
-# Ευρετήριο μελέτης
-### Μετανάστευση / Πληθυσμός
-- **Μελέτη A** – στόχος … → `notebooks/...ipynb` → έξοδος `reports/...html`
-- **Μελέτη B** – στόχος … → …
+# Study Index
+### Migration / Population
+- **Study A** – target … → `notebooks/...ipynb` → output `reports/...html`
+- **Study B** – target … → …
 
-### Σύνολα δεδομένων εταιρείας
-- **Μελέτη C** – στόχος … → ...
+### Company Datasets
+- **C Study** – target … → ...
 
-### Μέθοδοι / πρότυπα
-- Πρότυπο καθαρισμού δεδομένων → `src/...`
-- Βοηθήματα στατιστικών/οικονομετρίας → `src/...`
+### Methods / Templates
+- Data Cleaning Template → `src/...`
+- Statistics/Econometrics Tools → `src/...`
 
-
-## Σημειώσεις αναπαραγωγιμότητας
+## Reproducibility Notes
 - Python: x.y / R: x.y
-- Τρόπος εκτέλεσης: …
-- Seeds / καρφιτσωμένες υποδιαιρέσεις: …
+- Execution Mode: …
+- Seeds / Pinned Subdivisions: …
 
 
-## Πολιτική δεδομένων
-- Το `data/raw/` περιέχει …
-- Το `data/processed/` περιέχει …
-- Προσωπικά δεδομένα: δεν αποθηκεύονται (ή: αποθηκεύονται μόνο συγκεντρωτικά/ανώνυμα)
+## Data Policy
+- `data/raw/` contains …
+- `data/processed/` contains …
+- Personal data: not stored (or: only stored in aggregate/anonymous form)
 
-## Άδεια χρήσης
-- Κωδικός: MIT
-- Δεδομένα & δημιουργημένα αποτελέσματα: CC BY 4.0 (βλ. DATA_LICENSE.md)
+## License
+- Code: MIT
+- Data & generated results: CC BY 4.0 (see DATA_LICENSE.md)
 
-Άδεια χρήσης: Ο κώδικας είναι MIT. Τα δεδομένα & τα δημιουργημένα αποτελέσματα είναι CC BY 4.0 (βλ. DATA_LICENSE.md)
+License: Code is MIT. Data & generated results are CC BY 4.0 (see DATA_LICENSE.md)
