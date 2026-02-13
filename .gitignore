@@ -1,0 +1,6 @@
+@"
+# large datasets
+Bank Account Fraud Dataset Suite (NeurIPS 2022)/dataset/*.csv
+*.parquet
+*.zip
+"@ | Out-File -Encoding utf8 .gitignore
