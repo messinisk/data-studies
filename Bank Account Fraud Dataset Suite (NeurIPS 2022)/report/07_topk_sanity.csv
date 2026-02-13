@@ -1,0 +1,2 @@
+proxy,k_fraction,k_rows,topk_fraud_rate,topk_lift,topk_fraud_captured,total_fraud,recall_at_k
+credit_risk_score,0.01,10000,0.0659,5.975156405839151,659,11029,0.059751564058391514

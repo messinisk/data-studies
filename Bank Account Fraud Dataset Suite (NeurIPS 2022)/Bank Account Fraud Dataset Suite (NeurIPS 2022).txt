@@ -1,0 +1,34 @@
+https://www.kaggle.com/datasets/sgpjesus/bank-account-fraud-dataset-neurips-2022
+
+
+About Dataset
+The Bank Account Fraud (BAF) suite of datasets has been published at NeurIPS 2022 and it comprises a total of 6 different synthetic bank account fraud tabular datasets. BAF is a realistic, complete, and robust test bed to evaluate novel and existing methods in ML and fair ML, and the first of its kind!
+
+This suite of datasets is:
+
+Realistic, based on a present-day real-world dataset for fraud detection;
+Biased, each dataset has distinct controlled types of bias;
+Imbalanced, this setting presents a extremely low prevalence of positive class;
+Dynamic, with temporal data and observed distribution shifts;
+Privacy preserving, to protect the identity of potential applicants we have applied differential privacy techniques (noise addition), feature encoding and trained a generative model (CTGAN).
+
+
+
+
+
+
+Each dataset is composed of:
+
+1 million instances;
+30 realistic features used in the fraud detection use-case;
+A column of “month”, providing temporal information about the dataset;
+Protected attributes, (age group, employment status and % income).
+Detailed information (datasheet) on the suite: https://github.com/feedzai/bank-account-fraud/blob/main/documents/datasheet.pdf
+
+Check out the github repository for more resources and some example notebooks: https://github.com/feedzai/bank-account-fraud
+
+Read the NeurIPS 2022 paper here: https://arxiv.org/abs/2211.13358
+
+Learn more about Feedzai Research here: https://research.feedzai.com/
+
+Please, use the following citation of BAF dataset suite
