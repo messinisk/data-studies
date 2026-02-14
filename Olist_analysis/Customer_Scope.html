@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Customer_Scope</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="olist-brazil-γεωγραφική-κατανομή-πελατών-customer-records">Olist
+(Brazil) — Γεωγραφική κατανομή πελατών (Customer records)</h1>
+<h2 id="scope">Scope</h2>
+<p>Ανάλυση γεωγραφικής κατανομής πελατών με βάση το dataset: -
+<code>olist_customers_dataset_ecommerce_brazilian.csv</code></p>
+<p><strong>Σημαντικός περιορισμός:</strong> το dataset customers είναι
+<em>dimension table</em> και δεν περιέχει: - timestamps (πότε έγινε
+αγορά) - orders (πόσες αγορές έκανε ο πελάτης) - ποσά/GMV</p>
+<p>Άρα τα αποτελέσματα αποτυπώνουν <strong>κατανομή customer records
+(proxy ζήτησης)</strong> και όχι επιβεβαιωμένη <strong>κατανομή
+αγορών</strong>.</p>
+<hr />
+<h2 id="data-dictionary-στήλες-που-χρησιμοποιήθηκαν">Data dictionary
+(στήλες που χρησιμοποιήθηκαν)</h2>
+<ul>
+<li><code>customer_id</code>: instance id πελάτη (συνδέεται με orders σε
+πλήρες schema Olist)</li>
+<li><code>customer_unique_id</code>: “person id” (ο ίδιος άνθρωπος
+μπορεί να εμφανιστεί πολλαπλές φορές)</li>
+<li><code>customer_zip_code_prefix</code>: πρόθεμα ταχυδρομικού
+κώδικα</li>
+<li><code>customer_city</code>: πόλη</li>
+<li><code>customer_state</code>: πολιτεία (UF)</li>
+</ul>
+<hr />
+<h2 id="output-artifacts-πίνακες-γραφήματα">Output artifacts (πίνακες
+&amp; γραφήματα)</h2>
+<h3 id="σύνοψη">Σύνοψη</h3>
+<ul>
+<li><a
+href="olist_geo_analysis/summary_metrics.csv">summary_metrics.csv</a></li>
+</ul>
+<h3 id="κατανομή-ανά-πολιτεία-uf">Κατανομή ανά πολιτεία (UF)</h3>
+<ul>
+<li>Πλήρης πίνακας: <a
+href="olist_geo_analysis/state_distribution_all.csv">state_distribution_all.csv</a></li>
+<li>Top 10: <a
+href="olist_geo_analysis/top10_states.csv">top10_states.csv</a></li>
+<li>Γράφημα (bar):<br />
+<img src="olist_geo_analysis/state_distribution_bar.png"
+alt="State distribution bar" /></li>
+</ul>
+<h3 id="κατανομή-ανά-πόλη">Κατανομή ανά πόλη</h3>
+<ul>
+<li>Top 20 πόλεις: <a
+href="olist_geo_analysis/top20_cities.csv">top20_cities.csv</a></li>
+<li>Γράφημα (bar):<br />
+<img src="olist_geo_analysis/top20_cities_bar.png"
+alt="Top 20 cities bar" /></li>
+</ul>
+<h3 id="top-5-πόλεις-μέσα-στις-top-5-πολιτείες">Top 5 πόλεις μέσα στις
+top 5 πολιτείες</h3>
+<ul>
+<li><a
+href="olist_geo_analysis/top5_cities_each_top5_states.csv">top5_cities_each_top5_states.csv</a></li>
+</ul>
+<hr />
+<h2 id="key-findings-με-βάση-customer-records">Key findings (με βάση
+customer records)</h2>
+<ul>
+<li>Η πολιτεία <strong>SP</strong> συγκεντρώνει ~42% των customer
+records.</li>
+<li>Οι <strong>SP + RJ + MG</strong> συγκεντρώνουν ~66.6% (έντονη χωρική
+συγκέντρωση).</li>
+<li>Η πόλη <strong>São Paulo</strong> μόνη της είναι ~15.6% των customer
+records.</li>
+</ul>
+<blockquote>
+<p>Για ακριβή “γεωγραφική κατανομή αγορών” απαιτείται πίνακας
+<strong>orders</strong> ώστε να μετρήσουμε <strong>orders/GMV ανά
+<code>customer_id</code></strong> και να τα χαρτογραφήσουμε
+γεωγραφικά.</p>
+<p>Σε αυτή τη φάση, η ανάλυση βασίζεται σε <strong>customer
+records</strong> (γεωγραφική κατανομή πελατειακής βάσης / proxy
+ζήτησης).</p>
+</blockquote>
+<hr />
+<h2
+id="concentration-geography-artifacts-current-dataset-customers-only">Concentration
+&amp; geography artifacts (current dataset: customers only)</h2>
+<h3 id="heatmap-ανά-πολιτεία-uf">Heatmap ανά πολιτεία (UF)</h3>
+<ul>
+<li>Interactive: <a
+href="olist_geo_analysis/brazil_states_heatmap_customers.html"><code>brazil_states_heatmap_customers.html</code></a></li>
+<li>Static (προτείνεται για GitHub embed):
+<code>brazil_states_heatmap_customers.svg</code>
+<ul>
+<li>Παράγεται με Plotly + kaleido (βλ. οδηγίες export).</li>
+<li><figure>
+<img src="olist_geo_analysis/brazil_states_heatmap_customers.png"
+alt="Brazil heatmap" />
+<figcaption aria-hidden="true">Brazil heatmap</figcaption>
+</figure></li>
+</ul></li>
+</ul>
+<h3 id="lorenz-gini-ανισοκατανομή-μεταξύ-πολιτειών">Lorenz &amp; Gini
+(ανισοκατανομή μεταξύ πολιτειών)</h3>
+<ul>
+<li><p>Lorenz curve: <img
+src="olist_geo_analysis/lorenz_curve_states.png"
+alt="Lorenz curve" /></p></li>
+<li><p>Gini coefficient (states, based on customer records):
+<strong>0.741922</strong></p>
+<ul>
+<li>Source: <a
+href="olist_geo_analysis/gini_states.txt"><code>gini_states.txt</code></a></li>
+</ul></li>
+</ul>
+<h3 id="pareto-optional">Pareto (optional)</h3>
+<ul>
+<li><figure>
+<img src="olist_geo_analysis/state_pareto.png" alt="State Pareto" />
+<figcaption aria-hidden="true">State Pareto</figcaption>
+</figure></li>
+</ul>
+<hr />
+<h2 id="next-steps">Next steps</h2>
+<ol type="1">
+<li>Επιλογή τελικού σετ οπτικοποιήσεων για report/repo:
+<ul>
+<li>Heatmap (γεωγραφικό “πού”)</li>
+<li>Lorenz/Gini &amp; Pareto (ποσοτικό “πόσο άνισα”)</li>
+</ul></li>
+<li>Αν προστεθεί orders dataset στο μέλλον:
+<ul>
+<li>μετάβαση από “customer records” → “orders / GMV” ανά
+πολιτεία/πόλη</li>
+<li>χρονική ανάλυση με timestamps από orders (π.χ. 2016–2018, αν
+επιβεβαιωθεί από min/max dates)</li>
+</ul></li>
+</ol>
+</body>
+</html>

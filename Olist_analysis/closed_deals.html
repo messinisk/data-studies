@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>closed_deals</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h2 id="closed-deals-per-month">Closed deals per month</h2>
+<figure>
+<img src="./outputs/closed_deals_per_month.png"
+alt="Closed deals per month" />
+<figcaption aria-hidden="true">Closed deals per month</figcaption>
+</figure>
+<h2 id="business-segment-pareto-top-20">Business segment Pareto (Top
+20)</h2>
+<figure>
+<img src="./outputs/business_segment_pareto_top20.png"
+alt="Business segment Pareto" />
+<figcaption aria-hidden="true">Business segment Pareto</figcaption>
+</figure>
+<h3 id="tables">Tables</h3>
+<ul>
+<li><a href="./outputs/summary.csv">Summary</a></li>
+<li><a href="./outputs/closed_deals_per_month.csv">Closed deals per
+month (table)</a></li>
+<li><a href="./outputs/top_business_segment.csv">Top business
+segment</a></li>
+<li><a href="./outputs/top_lead_type.csv">Top lead type</a></li>
+<li><a href="./outputs/top_lead_behaviour_profile.csv">Top behaviour
+profile</a></li>
+<li><a href="./outputs/top_business_type.csv">Top business type</a></li>
+<li><a href="./outputs/dist_has_company.csv">has_company
+distribution</a></li>
+<li><a href="./outputs/dist_has_gtin.csv">has_gtin distribution</a></li>
+<li><a href="./outputs/numeric_summary.csv">Numeric summary</a></li>
+</ul>
+<h2 id="table-closed-deals-per-month">Table closed deals per month</h2>
+<table>
+<thead>
+<tr>
+<th>month</th>
+<th style="text-align: right;">closed_deals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2017-12</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>2018-01</td>
+<td style="text-align: right;">73</td>
+</tr>
+<tr>
+<td>2018-02</td>
+<td style="text-align: right;">113</td>
+</tr>
+<tr>
+<td>2018-03</td>
+<td style="text-align: right;">147</td>
+</tr>
+<tr>
+<td>2018-04</td>
+<td style="text-align: right;">207</td>
+</tr>
+<tr>
+<td>2018-05</td>
+<td style="text-align: right;">122</td>
+</tr>
+<tr>
+<td>2018-06</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr>
+<td>2018-07</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr>
+<td>2018-08</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr>
+<td>2018-09</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr>
+<td>2018-10</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr>
+<td>2018-11</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
