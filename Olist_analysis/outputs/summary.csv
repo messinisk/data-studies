@@ -1,0 +1,2 @@
+rows,unique_mql_id,unique_seller_id,unique_sdr_id,unique_sr_id,won_date_min,won_date_max,declared_monthly_revenue_zero_count,declared_monthly_revenue_positive_count,declared_product_catalog_size_nonnull
+842,842,842,32,22,2017-12-05 02:00:00,2018-11-14 18:04:19,797,45,69

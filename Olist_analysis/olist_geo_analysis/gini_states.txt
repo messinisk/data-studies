@@ -1,0 +1,1 @@
+Gini (states, based on customer records): 0.741922

@@ -1,0 +1,11 @@
+lead_behaviour_profile,count,share_pct
+cat,407,48.34
+,177,21.02
+eagle,123,14.61
+wolf,95,11.28
+shark,24,2.85
+"cat, wolf",8,0.95
+"eagle, wolf",3,0.36
+"eagle, cat",3,0.36
+"shark, cat",1,0.12
+"shark, wolf",1,0.12

@@ -1,0 +1,7 @@
+metric,value
+rows_total,99441.0
+states_unique,27.0
+cities_unique,4119.0
+top3_states_share_pct,66.61
+top5_states_share_pct,77.18
+top10_states_share_pct,90.46
