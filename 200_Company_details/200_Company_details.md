@@ -5,6 +5,13 @@ date: "2026"
 lang: el
 ---
 
+scope 
+
+This comprehensive dataset presents a curated collection of essential information for 200 companies, including their names, ratings, and types. With this dataset, analysts, researchers, and business enthusiasts can delve into the profiles of diverse companies, facilitating comparative analyses, trend identification, and industry insights. Whether you're seeking to explore the landscape of corporate entities, assess market dynamics, or conduct benchmarking exercises, this dataset serves as a valuable resource for uncovering the fundamental attributes of a wide array of companies. Stay tuned for regular updates and enrich your analyses with this dynamic repository of corporate data.
+
+https://www.kaggle.com/datasets/prateekshap/200-company-details
+
+----
 # Εισαγωγή
 
 Η παρούσα αναφορά αποτελεί διερευνητική ανάλυση
